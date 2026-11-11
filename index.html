@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#242321">
+    <meta name="description" content="Arsip rangkuman pembelajaran Aldo.">
+    <title>Aldo's Web</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="topbar">
+    <a href="#" class="brand" onclick="showPage('home'); return false;">
+        <span class="brand-icon">◆</span>
+        <span>ALDO'S <b>NOTES.</b></span>
+    </a>
+
+    <div class="marketplaces">
+        <a href="#" aria-label="Shopee">
+            <img src="assets/shopee-logo.png" alt="Shopee">
+        </a>
+        <a href="#" aria-label="Tokopedia">
+            <img src="assets/tokped-logo.png" alt="Tokopedia">
+        </a>
+    </div>
+</header>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="profile-mini">
+            <img src="assets/foto-aldo.jpg" alt="Foto Aldo">
+            <h3>Aldo</h3>
+            <p>Student & Note Collector</p>
+            <span class="status">
+                <i></i> Learning in progress
+            </span>
+        </div>
+
+        <div class="nav-label">MENU UTAMA</div>
+
+        <nav class="navigation">
+            <button class="nav-item active" data-page="home"
+                onclick="showPage('home')">
+                <span>⌂</span> Beranda
+            </button>
+
+            <button class="nav-item" data-page="archive"
+                onclick="showPage('archive')">
+                <span>▤</span> Arsip Rangkuman
+            </button>
+
+            <button class="nav-item" data-page="profile"
+                onclick="showPage('profile')">
+                <span>◉</span> Profil
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <span class="sidebar-line"></span>
+            <p>BUILD YOUR KNOWLEDGE.</p>
+            <small>© 2026 ALDO'S NOTES</small>
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <!-- BERANDA -->
+        <section id="home" class="page active">
+
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="eyebrow">
+                        <i></i> PERSONAL LEARNING ARCHIVE
+                    </span>
+
+                    
+                    <h1>
+                        RANGKUMAN ALDO<br>
+                        <span>Cyberpreneurship.</span>
+                    </h1>
+
+                    <p>
+                        Tempat menyimpan catatan, rangkuman, dan
+                        perjalanan pembelajaran dalam satu arsip.
+                    </p>
+
+
+                    <button class="primary-btn"
+                        onclick="showPage('archive')">
+                        Jelajahi Arsip <span>↗</span>
+                    </button>
+                </div>
+
+                <div class="hero-decoration">
+                    <div class="stone stone-one"></div>
+                    <div class="stone stone-two"></div>
+                    <div class="stone stone-three"></div>
+                    <span class="stone-text">EST. 2026</span>
+                </div>
+
+                <div class="hero-index">01 / 03</div>
+            </div>
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">OVERVIEW</span>
+                    <h2>Learning Statistics</h2>
+                </div>
+                <span class="section-number">01</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">▤</span>
+                    <p>TOTAL RANGKUMAN</p>
+                    <h3 id="totalNotes">0</h3>
+                    <small>Catatan tersimpan</small>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">◷</span>
+                    <p>TOTAL PERTEMUAN</p>
+                    <h3 id="totalMeetings">0</h3>
+                    <small>Materi pembelajaran</small>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-icon">◆</span>
+                    <p>MATA KULIAH</p>
+                    <h3 id="totalCourses">0</h3>
+                    <small>Bidang pembelajaran</small>
+                </div>
+            </div>
+
+            <div class="section-heading recent-heading">
+                <div>
+                    <span class="eyebrow">LATEST COLLECTION</span>
+                    <h2>Rangkuman Terbaru</h2>
+                </div>
+
+                <button class="text-link"
+                    onclick="showPage('archive')">
+                    Lihat Semua ↗
+                </button>
+            </div>
+
+            <div id="recentNotes" class="notes-grid"></div>
+
+            <footer>
+                <span>ALDO'S NOTES © 2026</span>
+                <span>BUILT WITH KNOWLEDGE & STONE.</span>
+            </footer>
+
+        </section>
+
+        <!-- ARSIP -->
+        <section id="archive" class="page">
+
+            <div class="page-header">
+                <span class="eyebrow">KNOWLEDGE COLLECTION</span>
+                <h1>Arsip <span>Rangkuman.</span></h1>
+                <p>Semua catatan pembelajaran tersimpan di sini.</p>
+            </div>
+
+            <div class="archive-toolbar">
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input type="text" id="searchInput"
+                        placeholder="Cari rangkuman atau materi...">
+                </div>
+
+                <select id="courseFilter">
+                    <option value="all">Semua Mata Kuliah</option>
+                </select>
+            </div>
+
+            <div id="archiveCount" class="archive-count"></div>
+
+            <div id="archiveNotes" class="notes-grid"></div>
+
+            <footer>
+                <span>ALDO'S NOTES © 2026</span>
+                <span>BUILT WITH KNOWLEDGE & STONE.</span>
+            </footer>
+
+        </section>
+
+        <!-- PROFIL -->
+        <section id="profile" class="page">
+
+            <div class="page-header">
+                <span class="eyebrow">ABOUT THE AUTHOR</span>
+                <h1>Tentang <span>Aldo.</span></h1>
+                <p>Mengenal pemilik arsip pembelajaran ini.</p>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-image">
+                    <img src="images/foto-profil.jpg" alt="Foto Aldo">
+                </div>
+
+                <div class="profile-info">
+                    <span class="eyebrow">THE PERSON BEHIND THE NOTES</span>
+                    <h2>Aldo</h2>
+                    <p class="profile-role">Student & Knowledge Explorer</p>
+
+                    <div class="profile-divider"></div>
+
+                    <p class="profile-description">
+                        Halo! Saya Aldo. Website ini merupakan
+                        ruang dokumentasi untuk menyimpan,
+                        mengarsipkan, dan mengorganisir rangkuman
+                        materi perkuliahan.
+                    </p>
+
+                    <p class="profile-description">
+                        Saya percaya bahwa pengetahuan yang
+                        dikumpulkan sedikit demi sedikit akan
+                        menjadi fondasi yang kuat, layaknya batu.
+                    </p>
+
+                    <div class="profile-tags">
+                        <span>LEARNING</span>
+                        <span>DOCUMENTATION</span>
+                        <span>KNOWLEDGE</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <span>ALDO'S NOTES © 2026</span>
+                <span>BUILT WITH KNOWLEDGE & STONE.</span>
+            </footer>
+
+        </section>
+
+        <!-- DETAIL RANGKUMAN -->
+        <section id="detail" class="page">
+
+            <button class="back-btn" onclick="showPage('archive')">
+                ← Kembali ke Arsip
+            </button>
+
+            <div id="detailContent"></div>
+
+            <footer>
+                <span>ALDO'S NOTES © 2026</span>
+                <span>BUILT WITH KNOWLEDGE & STONE.</span>
+            </footer>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
